@@ -746,3 +746,20 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 /* فضای خالی بین آخرین نوشتهٔ صفحه و پاورقی */
 .wrap { padding-bottom: 64px; }
 @media (min-width: 720px) { .wrap { padding-bottom: 84px; } }
+
+/* ---------- سربرگ باریک‌تر ---------- */
+.topbar { padding: 10px 12px 11px; gap: 8px; border-radius: 20px; }
+.topbar .brand-sub { display: none; }
+.topbar .brand-mark { width: 34px; height: 34px; border-radius: 11px; }
+.topbar .brand-mark svg { width: 19px; height: 19px; }
+.topbar .brand-role { font-size: 16.5px; }
+.topbar .brand .brand-name { font-size: 13px; }
+.topbar .nav { padding: 4px; }
+.topbar .nav a { padding: 7px 12px; font-size: 14px; }
+.topbar.compact { padding: 6px 10px 7px; gap: 5px; }
+.topbar.compact .brand-mark { width: 28px; height: 28px; border-radius: 9px; }
+.topbar.compact .brand-mark svg { width: 16px; height: 16px; }
+.topbar.compact .brand-role { font-size: 14.5px; }
+.topbar.compact .brand .brand-name { font-size: 12px; }
+.topbar.compact .nav { padding: 3px; }
+.topbar.compact .nav a { padding: 5px 10px; font-size: 13px; }
