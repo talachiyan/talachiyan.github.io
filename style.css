@@ -438,3 +438,62 @@ p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   .slide img { transition: none; }
 }
+
+/* =====================================================
+   نسخهٔ ۸: پس‌زمینهٔ تیره‌تر و زنده، گالری کوچک‌تر، نوار خاکستری
+   ===================================================== */
+:root { --bg: #c9dad6; --line: #c5d8d3; }
+body { background-color: var(--bg); }
+.nav { background: #eef3f2; }
+.wrap { position: relative; z-index: 1; gap: 16px; }
+.stack { gap: 28px; }
+
+/* پس‌زمینهٔ زنده: لکه‌های نرم رنگی که آرام جابه‌جا می‌شوند */
+body::before, body::after { content: ""; position: fixed; inset: -20%; z-index: 0; pointer-events: none; }
+body::before {
+  background:
+    radial-gradient(38% 30% at 18% 22%, rgba(0, 135, 124, .30), transparent 70%),
+    radial-gradient(34% 28% at 82% 30%, rgba(70, 145, 47, .22), transparent 70%),
+    radial-gradient(40% 32% at 70% 82%, rgba(0, 110, 130, .26), transparent 70%),
+    radial-gradient(26% 22% at 28% 78%, rgba(242, 194, 48, .20), transparent 70%);
+  animation: drift 26s ease-in-out infinite alternate;
+}
+/* الگوی خطی ریز (نمودار، کیف، لامپ، هدف) که کمی شناور است */
+body::after {
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' fill='none' stroke='%2395b8b1' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg opacity='.75'%3E%3Cpath d='M26 56V30M26 56h30M35 50v-6M44 50V37M53 50v-9'/%3E%3Cpath d='M160 44h30v22h-30zM168 44v-5h14v5'/%3E%3Cpath d='M104 168h11M105 174h9M109 140a13 13 0 0 0-7.600 23.600V167h15v-2.400A13 13 0 0 0 109 140z'/%3E%3Cpath d='M170 188l13-13 9 9 15-16'/%3E%3Ccircle cx='60' cy='196' r='11'/%3E%3Ccircle cx='60' cy='196' r='4'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 240px 240px;
+  animation: pattern 60s linear infinite;
+  opacity: .8;
+}
+@keyframes drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(3%, -4%, 0) scale(1.08); }
+  100% { transform: translate3d(-4%, 3%, 0) scale(1.03); }
+}
+@keyframes pattern { from { background-position: 0 0; } to { background-position: 240px 240px; } }
+@media (prefers-reduced-motion: reduce) { body::before, body::after { animation: none; } }
+
+/* نوار تاریخ و ساعت: خاکستری */
+.ticker { background: #eceff1; border-color: #cfd6da; margin-bottom: -14px; padding: 7px 0; }
+.tick-text { color: #5b6670; font-weight: 600; }
+.tick-dot { color: #9aa5ad; }
+
+/* باکس گالری: کوچک و جمع‌وجور */
+.gallery-card { padding: 6px 6px 4px; border-radius: 20px; }
+.gallery { --gh: 104px; margin: 0; }
+.gal-track { gap: 10px; padding: 16px calc(50% - var(--gh) / 2) 24px; border-radius: 16px; }
+.slide img { border-width: 2px; border-radius: 12px; transform: scale(.86); filter: blur(2.5px); opacity: .6; }
+.slide.is-active img { transform: scale(1.16); filter: none; opacity: 1; }
+.gal-btn { width: 32px; height: 32px; font-size: 20px; top: calc(16px + var(--gh) / 2 - 16px); opacity: .92; }
+.gal-next { left: 4px; }
+.gal-prev { right: 4px; }
+.gal-dots { bottom: 6px; gap: 6px; }
+.gal-dot { width: 8px; height: 8px; }
+.gal-dot.on { width: 22px; }
+@media (min-width: 720px) {
+  .gallery { --gh: 190px; }
+  .gal-track { gap: 16px; padding-block: 26px 32px; }
+  .gal-btn { width: 40px; height: 40px; top: calc(26px + var(--gh) / 2 - 20px); }
+  .gallery-card { padding: 8px 10px 6px; }
+}

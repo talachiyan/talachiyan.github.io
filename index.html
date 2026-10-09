@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap">
-<link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 <div class="wrap">
@@ -45,22 +45,25 @@
       <span class="sr-only" id="tickerSr"></span>
     </div>
 
-    <section class="card hero">
-      <div class="gallery" id="gallery" role="region" aria-roledescription="carousel" aria-label="نمونه‌ای از محتواهای من">
-        <div class="gal-track" id="galTrack" tabindex="0">
-          <figure class="slide"><img src="img/s01.jpg" width="720" height="720" alt="چرا تیم شما کار نمی‌کند؟ مشکل همیشه از کارمند نیست" decoding="async"></figure>
-          <figure class="slide"><img src="img/s02.jpg" width="720" height="723" alt="۱. هدف را شفاف نکرده‌اید" decoding="async"></figure>
-          <figure class="slide"><img src="img/s03.jpg" width="720" height="719" alt="۲. مسئولیت دارید، اما اختیار ندارید" loading="lazy" decoding="async"></figure>
-          <figure class="slide"><img src="img/s04.jpg" width="720" height="718" alt="۳. فقط وقتی اشتباه می‌کنند با آن‌ها صحبت می‌کنید" loading="lazy" decoding="async"></figure>
-          <figure class="slide"><img src="img/s05.jpg" width="720" height="720" alt="۴. سیستم ندارید؛ به آدم‌ها وابسته‌اید" loading="lazy" decoding="async"></figure>
-          <figure class="slide"><img src="img/s06.jpg" width="720" height="716" alt="۵. مدیر هستید، اما رهبر نیستید" loading="lazy" decoding="async"></figure>
-          <figure class="slide"><img src="img/s07.jpg" width="720" height="638" alt="۶. قبل از اینکه بگویید تیم من ضعیفه، این ۵ سؤال را از خودتان بپرسید" loading="lazy" decoding="async"></figure>
-          <figure class="slide"><img src="img/s08.jpg" width="720" height="380" alt="گاهی برای بهتر شدن تیم، اول باید مدیریت را بهتر کرد" loading="lazy" decoding="async"></figure>
-        </div>
-        <button type="button" class="gal-btn gal-next" id="galNext" aria-label="تصویر بعدی">‹</button>
-        <button type="button" class="gal-btn gal-prev" id="galPrev" aria-label="تصویر قبلی">›</button>
-        <div class="gal-dots" id="galDots"><button type="button" class="gal-dot" aria-label="تصویر 1"></button><button type="button" class="gal-dot" aria-label="تصویر 2"></button><button type="button" class="gal-dot" aria-label="تصویر 3"></button><button type="button" class="gal-dot" aria-label="تصویر 4"></button><button type="button" class="gal-dot" aria-label="تصویر 5"></button><button type="button" class="gal-dot" aria-label="تصویر 6"></button><button type="button" class="gal-dot" aria-label="تصویر 7"></button><button type="button" class="gal-dot" aria-label="تصویر 8"></button></div>
+    <section class="card gallery-card" aria-label="نمونه‌ای از محتواها">
+    <div class="gallery" id="gallery" role="region" aria-roledescription="carousel" aria-label="نمونه‌ای از محتواهای من">
+      <div class="gal-track" id="galTrack" tabindex="0">
+        <figure class="slide"><img src="img/s01.jpg" width="720" height="720" alt="چرا تیم شما کار نمی‌کند؟ مشکل همیشه از کارمند نیست" decoding="async"></figure>
+        <figure class="slide"><img src="img/s02.jpg" width="720" height="723" alt="۱. هدف را شفاف نکرده‌اید" decoding="async"></figure>
+        <figure class="slide"><img src="img/s03.jpg" width="720" height="719" alt="۲. مسئولیت دارید، اما اختیار ندارید" loading="lazy" decoding="async"></figure>
+        <figure class="slide"><img src="img/s04.jpg" width="720" height="718" alt="۳. فقط وقتی اشتباه می‌کنند با آن‌ها صحبت می‌کنید" loading="lazy" decoding="async"></figure>
+        <figure class="slide"><img src="img/s05.jpg" width="720" height="720" alt="۴. سیستم ندارید؛ به آدم‌ها وابسته‌اید" loading="lazy" decoding="async"></figure>
+        <figure class="slide"><img src="img/s06.jpg" width="720" height="716" alt="۵. مدیر هستید، اما رهبر نیستید" loading="lazy" decoding="async"></figure>
+        <figure class="slide"><img src="img/s07.jpg" width="720" height="638" alt="۶. قبل از اینکه بگویید تیم من ضعیفه، این ۵ سؤال را از خودتان بپرسید" loading="lazy" decoding="async"></figure>
+        <figure class="slide"><img src="img/s08.jpg" width="720" height="380" alt="گاهی برای بهتر شدن تیم، اول باید مدیریت را بهتر کرد" loading="lazy" decoding="async"></figure>
       </div>
+      <button type="button" class="gal-btn gal-next" id="galNext" aria-label="تصویر بعدی">‹</button>
+      <button type="button" class="gal-btn gal-prev" id="galPrev" aria-label="تصویر قبلی">›</button>
+      <div class="gal-dots" id="galDots"><button type="button" class="gal-dot" aria-label="تصویر 1"></button><button type="button" class="gal-dot" aria-label="تصویر 2"></button><button type="button" class="gal-dot" aria-label="تصویر 3"></button><button type="button" class="gal-dot" aria-label="تصویر 4"></button><button type="button" class="gal-dot" aria-label="تصویر 5"></button><button type="button" class="gal-dot" aria-label="تصویر 6"></button><button type="button" class="gal-dot" aria-label="تصویر 7"></button><button type="button" class="gal-dot" aria-label="تصویر 8"></button></div>
+    </div>
+    </section>
+
+    <section class="card hero">
       <div class="hero-text">
         <h1>با نقشهٔ روشن و تیم درست، کسب‌وکار <span class="accent">رشد</span> می‌کند</h1>
         <p class="justify muted">من حسین طلاچیان هستم. کنار صاحبان کسب‌وکار می‌نشینم تا آنچه امروز پراکنده است، فردا سامان بگیرد: پیامی که مشتری را جذب کند، تیمی که به هم تکیه کند، و مدیریتی که بر عدد و برنامه استوار باشد، نه بر حدس و گمان.</p>
@@ -102,6 +105,6 @@
 <a class="fab" href="contact.html" aria-label="تماس سریع">
   <svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>
 </a>
-<script src="script.js?v=2" defer></script>
+<script src="script.js?v=3" defer></script>
 </body>
 </html>
