@@ -961,3 +961,14 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 .coop-list .svc summary { min-height: 54px; padding: 9px 12px; }
 .coop-list .svc .icon { width: 36px; height: 36px; border-radius: 11px; }
 .post-body ol { list-style-type: persian; }
+
+/* لینک داخلی مقاله‌ها */
+.post-body a { color: #00877c; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.post-related { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+.post-related h2 { margin: 0; font-size: 18px; color: #0c5f57; }
+.post-related h2::after { display: none; }
+.post-related .post-card { padding: 10px 12px; gap: 4px; }
+.post-related .post-card strong { font-size: 14.5px; }
+.post-svc { margin: 0; text-align: center; font-weight: 700; }
+.post-svc a { color: #00877c; text-decoration: none; }
+.svc-more { display: inline-block; margin-top: 6px; font-size: 13.5px; font-weight: 700; color: #00877c; text-decoration: none; }
