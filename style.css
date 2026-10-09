@@ -842,3 +842,12 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 .topbar .brand-mark::after{display:none}
 .topbar .brand-mark img{width:100%;height:100%;display:block}
 .topbar.compact .brand-mark{width:38px;height:38px}
+
+/* عنوان بلندتر: روی گوشی نام زیر برچسب بیاید */
+@media (max-width: 480px) {
+  .topbar .brand-title { flex-direction: column; align-items: flex-start; gap: 3px; min-width: 0; }
+  .topbar .brand-role { font-size: 15px; }
+  .topbar .brand-name { font-size: 12.5px; padding-inline-start: 4px; }
+  .topbar.compact .brand-title { flex-direction: row; align-items: center; }
+  .topbar.compact .brand-name { display: none; }
+}
