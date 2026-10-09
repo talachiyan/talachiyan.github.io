@@ -836,3 +836,10 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 .chips { display: grid; grid-template-columns: 1fr; gap: 6px; }
 .chips li { text-align: center; border-radius: 12px; }
 @media (min-width: 720px) { .chips { grid-template-columns: repeat(3, auto); justify-content: start; } }
+
+/* ---------- لوگوی طلاچیان در سربرگ ---------- */
+.topbar .brand-mark { width: 50px; height: 46px; background: none; border-radius: 0; flex: none; display: block; }
+.topbar .brand-mark::after { display: none; }
+.topbar .brand-mark img { width: 100%; height: 100%; display: block; object-fit: contain; }
+.topbar .brand { gap: 8px; }
+.topbar.compact .brand-mark { width: 38px; height: 35px; }
