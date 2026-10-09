@@ -931,3 +931,10 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 .contacts.tiles .brand-ico { width: 42px; height: 42px; box-shadow: 0 2px 6px rgba(0,0,0,.12); }
 .contacts.tiles .brand-ico img { width: 26px; height: 26px; border-radius: 0; }
 .contacts.tiles .t-bl .brand-ico img { border-radius: 50%; }
+
+/* همکاری: فهرست دسته‌بندی‌شده */
+.coop-list { display: flex; flex-direction: column; gap: 10px; }
+.coop-list .svc-group { margin: 8px 0 0; }
+.coop-list .fact { min-height: 52px; padding: 9px 12px; }
+.coop-list .fact .icon { width: 36px; height: 36px; border-radius: 11px; }
+.coop-list .fact-title { font-size: 15px; }
