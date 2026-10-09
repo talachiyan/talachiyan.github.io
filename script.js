@@ -120,7 +120,7 @@
       "کسب‌وکار سالم، فرایندی روشن و تیمی پاسخ‌گو دارد.",
       "از مشاوره شروع کن؛ مسیر روشن‌تر می‌شود."
     ];
-    var SERVICES = 'مارکتینگ · تیم‌سازی · مدیریت کسب‌وکار · مشاورهٔ پرسنلی';
+    var SERVICES = 'مارکتینگ · تیم‌سازی · مدیریت هوشمند · داشبورد · مشاورهٔ پرسنلی';
     var dateFmt = null, timeFmt = null;
     try {
       dateFmt = new Intl.DateTimeFormat('fa-IR-u-ca-persian', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: tz });

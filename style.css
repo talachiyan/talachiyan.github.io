@@ -800,3 +800,39 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 .tk-svc { font-weight: 700; color: #4f5a63; }
 .ticker.static { height: auto; padding: 6px 10px; }
 .ticker.static .ticker-track { position: static; width: auto; flex-wrap: wrap; justify-content: center; gap: 2px 14px; white-space: normal; }
+
+/* =====================================================
+   نسخهٔ ۳۴: گروه‌بندی خدمات، صفحهٔ «درباره من»، نشان‌های اعتبار
+   ===================================================== */
+.svc-group { margin: 6px 0 0; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 800; color: #0c5f57; }
+.svc-group::before, .svc-group::after { content: ""; flex: 1; height: 1px; background: #c3d8d3; }
+.svc-group span { flex: none; padding: 0 2px; }
+.svc-list .svc-group:first-child { margin-top: 0; }
+
+.about-intro { margin: 0; color: #36454c; font-size: 15.5px; }
+.fact-list { display: flex; flex-direction: column; gap: 10px; }
+.fact { display: flex; align-items: center; gap: 12px; padding: 12px; min-height: 64px; background: #eef6f4; border: 1px solid #c3d8d3; border-radius: 18px; }
+.fact .icon { width: 42px; height: 42px; border-radius: 13px; background: #d8ebe6; flex: none; }
+.fact-text { min-width: 0; display: flex; flex-direction: column; line-height: 1.7; }
+.fact-title { font-size: 16px; font-weight: 700; color: var(--text); }
+.fact-sub { font-size: 13.5px; color: var(--muted); }
+.about-cta { align-self: center; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; border-radius: 999px; background: var(--blue); color: #fff; font-weight: 800; text-decoration: none; box-shadow: 0 6px 14px rgba(0, 135, 124, .25); margin-top: 6px; }
+.panel.narrow.light { display: flex; flex-direction: column; }
+
+.chips { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { background: #e1f1ed; border: 1px solid #b9dcd4; color: #0b5750; font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 999px; line-height: 1.7; }
+.more-link { align-self: flex-start; color: var(--blue); font-weight: 700; font-size: 14.5px; text-decoration: none; }
+.more-link:hover { text-decoration: underline; }
+/* منو با شش گزینه: کمی فشرده‌تر تا بدون اسکرول جا شود */
+.topbar .nav a { padding-inline: 8px; font-size: 12.5px; }
+@media (max-width: 380px) { .topbar .nav a { padding-inline: 6px; font-size: 12px; } }
+.topbar .nav { justify-content: space-between; }
+.panel h2.svc-group { margin: 8px 0 0; font-size: 14px; font-weight: 800; color: #0c5f57; line-height: 1.6; }
+.panel h2.svc-group::after { content: ""; display: block; flex: 1; width: auto; height: 1px; border-radius: 0; background: #c3d8d3; margin: 0; }
+.panel h2.svc-group::before { content: ""; flex: 1; height: 1px; background: #c3d8d3; }
+.panel h2.svc-group span { color: #0c5f57; }
+.chips { gap: 6px; }
+.chips li { font-size: 12px; padding: 3px 10px; }
+.chips { display: grid; grid-template-columns: 1fr; gap: 6px; }
+.chips li { text-align: center; border-radius: 12px; }
+@media (min-width: 720px) { .chips { grid-template-columns: repeat(3, auto); justify-content: start; } }
