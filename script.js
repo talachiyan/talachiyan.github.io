@@ -67,7 +67,15 @@
   (function () {
     var fab = document.querySelector('.fab');
     var foot = document.querySelector('.site-footer');
-    if (!fab || !foot || !('IntersectionObserver' in window)) return;
+    if (!fab) return;
+    // اول ۵ ثانیه باز است، بعد کوچک می‌شود؛ لمسِ حالت کوچک دوباره بازش می‌کند
+    var t;
+    function shrink() { clearTimeout(t); t = setTimeout(function () { fab.classList.add('mini'); }, 5000); }
+    fab.addEventListener('click', function (e) {
+      if (fab.classList.contains('mini')) { e.preventDefault(); fab.classList.remove('mini'); shrink(); }
+    });
+    shrink();
+    if (!foot || !('IntersectionObserver' in window)) return;
     new IntersectionObserver(function (e) {
       fab.classList.toggle('away', e[0].isIntersecting);
     }, { threshold: 0.05 }).observe(foot);
