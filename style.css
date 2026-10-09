@@ -1,14 +1,14 @@
 :root {
-  --bg: #eef1f5;
+  --bg: #f1f6f5;
   --surface: #ffffff;
-  --text: #1b2531;
-  --muted: #586678;
-  --blue: #1f5ea6;
-  --navy: #17406f;
-  --sky: #dbe7f5;
-  --line: #d3dbe5;
+  --text: #1a2a28;
+  --muted: #566966;
+  --blue: #00877c;
+  --navy: #0c5f57;
+  --sky: #daf1ec;
+  --line: #cfe2de;
   --radius: 22px;
-  --shadow: 0 6px 20px rgba(23, 64, 111, 0.08);
+  --shadow: 0 6px 20px rgba(12, 95, 87, 0.08);
   --font: "Vazirmatn", Tahoma, "Segoe UI", sans-serif;
 }
 
@@ -24,7 +24,7 @@ body {
   color: var(--text);
   background-color: var(--bg);
   /* الگوی بسیار کم‌رنگ پس‌زمینه: نمودار، کیف، لامپ */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' fill='none' stroke='%23d3dbe5' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg opacity='.55'%3E%3Cpath d='M24 52V28M24 52h28M32 46v-6M40 46V34M48 46v-9'/%3E%3Cpath d='M150 40h28v20h-28zM158 40v-4h12v4'/%3E%3Cpath d='M96 150h10M97 155h8M101 124a12 12 0 0 0-7 21.8V148h14v-2.2A12 12 0 0 0 101 124z'/%3E%3Cpath d='M160 170l12-12 8 8 14-15'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' fill='none' stroke='%23cfe2de' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg opacity='.55'%3E%3Cpath d='M24 52V28M24 52h28M32 46v-6M40 46V34M48 46v-9'/%3E%3Cpath d='M150 40h28v20h-28zM158 40v-4h12v4'/%3E%3Cpath d='M96 150h10M97 155h8M101 124a12 12 0 0 0-7 21.8V148h14v-2.2A12 12 0 0 0 101 124z'/%3E%3Cpath d='M160 170l12-12 8 8 14-15'/%3E%3C/g%3E%3C/svg%3E");
   background-size: 220px 220px;
 }
 
@@ -261,7 +261,7 @@ p { margin: 0; }
   background: var(--blue);
   display: grid;
   place-items: center;
-  box-shadow: 0 8px 22px rgba(31, 94, 166, 0.35);
+  box-shadow: 0 8px 22px rgba(0, 135, 124, 0.35);
   z-index: 20;
 }
 .fab svg { width: 26px; height: 26px; stroke: #fff; fill: none; stroke-width: 2; stroke-linejoin: round; }
@@ -285,3 +285,13 @@ p { margin: 0; }
   .service, .soon { flex-direction: column; gap: 10px; }
   .step { gap: 12px; }
 }
+
+/* ---------- رنگ‌های تکمیلی: سبز برگ و زرد لامپ ---------- */
+:root { --leaf: #46912f; --sun: #f2c230; }
+.accent { color: var(--leaf); }
+.brand-mark { position: relative; }
+.brand-mark::after { content: ""; position: absolute; top: -3px; left: -3px; width: 12px; height: 12px; border-radius: 50%; background: var(--sun); border: 2px solid var(--surface); }
+.panel h2 { color: #fff; }
+.panel h2::after { content: ""; display: block; width: 56px; height: 4px; border-radius: 999px; background: var(--sun); margin-top: 8px; }
+.step-num { background: var(--sun); color: #3d2f00; }
+.btn-primary { background: var(--blue); }
