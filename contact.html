@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap">
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 <div class="wrap">
@@ -25,9 +25,8 @@
         <span class="brand-mark" role="img" aria-label="لوگو">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l5-5 4 3 7-8"/><path d="M15 7h5v5"/></svg>
         </span>
-        <span class="brand-name">مهندس حسین طلاچیان</span>
+        <span class="brand-title"><span class="brand-role">مشاوره کسب‌وکار</span> <span class="brand-name">مهندس حسین طلاچیان</span></span>
       </a>
-      <span class="badge">مشاور کسب‌وکار</span>
     </div>
     <p class="brand-sub">مارکتینگ · تیم‌سازی · مدیریت کسب‌وکار · مشاورهٔ پرسنلی</p>
     <nav class="nav" aria-label="منوی اصلی">
@@ -73,15 +72,5 @@
 <a class="fab" href="contact.html" aria-label="تماس سریع">
   <svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>
 </a>
-<script>
-  // گزینهٔ صفحهٔ فعلی در نوار منو دیده شود
-  (function () {
-    var a = document.querySelector('.nav a.active');
-    var nav = document.querySelector('.nav');
-    if (a && nav && nav.scrollWidth > nav.clientWidth) {
-      nav.scrollLeft += a.getBoundingClientRect().left + a.offsetWidth / 2 - (nav.getBoundingClientRect().left + nav.clientWidth / 2);
-    }
-  })();
-</script>
 </body>
 </html>

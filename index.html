@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap">
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 <div class="wrap">
@@ -25,9 +25,8 @@
         <span class="brand-mark" role="img" aria-label="لوگو">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l5-5 4 3 7-8"/><path d="M15 7h5v5"/></svg>
         </span>
-        <span class="brand-name">مهندس حسین طلاچیان</span>
+        <span class="brand-title"><span class="brand-role">مشاوره کسب‌وکار</span> <span class="brand-name">مهندس حسین طلاچیان</span></span>
       </a>
-      <span class="badge">مشاور کسب‌وکار</span>
     </div>
     <p class="brand-sub">مارکتینگ · تیم‌سازی · مدیریت کسب‌وکار · مشاورهٔ پرسنلی</p>
     <nav class="nav" aria-label="منوی اصلی">
@@ -41,7 +40,27 @@
 
   <main class="stack">
 
+    <div class="ticker" role="timer" aria-label="تاریخ و ساعت امروز">
+      <div class="ticker-track" id="tickerTrack" aria-hidden="true"></div>
+      <span class="sr-only" id="tickerSr"></span>
+    </div>
+
     <section class="card hero">
+      <div class="gallery" id="gallery" role="region" aria-roledescription="carousel" aria-label="نمونه‌ای از محتواهای من">
+        <div class="gal-track" id="galTrack" tabindex="0">
+          <figure class="slide"><img src="img/s01.jpg" width="720" height="720" alt="چرا تیم شما کار نمی‌کند؟ مشکل همیشه از کارمند نیست" decoding="async"></figure>
+          <figure class="slide"><img src="img/s02.jpg" width="720" height="723" alt="۱. هدف را شفاف نکرده‌اید" decoding="async"></figure>
+          <figure class="slide"><img src="img/s03.jpg" width="720" height="719" alt="۲. مسئولیت دارید، اما اختیار ندارید" loading="lazy" decoding="async"></figure>
+          <figure class="slide"><img src="img/s04.jpg" width="720" height="718" alt="۳. فقط وقتی اشتباه می‌کنند با آن‌ها صحبت می‌کنید" loading="lazy" decoding="async"></figure>
+          <figure class="slide"><img src="img/s05.jpg" width="720" height="720" alt="۴. سیستم ندارید؛ به آدم‌ها وابسته‌اید" loading="lazy" decoding="async"></figure>
+          <figure class="slide"><img src="img/s06.jpg" width="720" height="716" alt="۵. مدیر هستید، اما رهبر نیستید" loading="lazy" decoding="async"></figure>
+          <figure class="slide"><img src="img/s07.jpg" width="720" height="638" alt="۶. قبل از اینکه بگویید تیم من ضعیفه، این ۵ سؤال را از خودتان بپرسید" loading="lazy" decoding="async"></figure>
+          <figure class="slide"><img src="img/s08.jpg" width="720" height="380" alt="گاهی برای بهتر شدن تیم، اول باید مدیریت را بهتر کرد" loading="lazy" decoding="async"></figure>
+        </div>
+        <button type="button" class="gal-btn gal-next" id="galNext" aria-label="تصویر بعدی">‹</button>
+        <button type="button" class="gal-btn gal-prev" id="galPrev" aria-label="تصویر قبلی">›</button>
+        <div class="gal-dots" id="galDots"><button type="button" class="gal-dot" aria-label="تصویر 1"></button><button type="button" class="gal-dot" aria-label="تصویر 2"></button><button type="button" class="gal-dot" aria-label="تصویر 3"></button><button type="button" class="gal-dot" aria-label="تصویر 4"></button><button type="button" class="gal-dot" aria-label="تصویر 5"></button><button type="button" class="gal-dot" aria-label="تصویر 6"></button><button type="button" class="gal-dot" aria-label="تصویر 7"></button><button type="button" class="gal-dot" aria-label="تصویر 8"></button></div>
+      </div>
       <div class="hero-text">
         <h1>با نقشهٔ روشن و تیم درست، کسب‌وکار <span class="accent">رشد</span> می‌کند</h1>
         <p class="justify muted">من حسین طلاچیان هستم. کنار صاحبان کسب‌وکار می‌نشینم تا آنچه امروز پراکنده است، فردا سامان بگیرد: پیامی که مشتری را جذب کند، تیمی که به هم تکیه کند، و مدیریتی که بر عدد و برنامه استوار باشد، نه بر حدس و گمان.</p>
@@ -49,11 +68,6 @@
           <a class="btn btn-primary" href="contact.html">درخواست مشاوره</a>
           <a class="btn btn-soft" href="services.html">خدمات من</a>
         </div>
-      </div>
-      <div class="hero-photo">
-        <!-- برای گذاشتن عکس: فایل را با نام portrait.jpg کنار این فایل بگذارید و خط زیر را جایگزین span کنید -->
-        <!-- <img src="portrait.jpg" alt="مهندس حسین طلاچیان"> -->
-        <span class="monogram" aria-hidden="true">ح.ط</span>
       </div>
     </section>
 
@@ -88,15 +102,6 @@
 <a class="fab" href="contact.html" aria-label="تماس سریع">
   <svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>
 </a>
-<script>
-  // گزینهٔ صفحهٔ فعلی در نوار منو دیده شود
-  (function () {
-    var a = document.querySelector('.nav a.active');
-    var nav = document.querySelector('.nav');
-    if (a && nav && nav.scrollWidth > nav.clientWidth) {
-      nav.scrollLeft += a.getBoundingClientRect().left + a.offsetWidth / 2 - (nav.getBoundingClientRect().left + nav.clientWidth / 2);
-    }
-  })();
-</script>
+<script src="script.js?v=2" defer></script>
 </body>
 </html>

@@ -376,3 +376,65 @@ p { margin: 0; }
   .brand-row { flex-wrap: wrap; }
   .nav a { padding: 9px 9px; }
 }
+
+/* ---------- سربرگ: «مشاوره کسب‌وکار» جلوی نام کوچک‌تر ---------- */
+.brand-title { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 0 8px; line-height: 1.7; min-width: 0; }
+.brand-role { font-size: 18px; font-weight: 800; color: var(--navy); white-space: nowrap; }
+.brand .brand-name { font-size: 14px; font-weight: 600; color: var(--muted); white-space: nowrap; }
+.badge { display: none; }
+@media (max-width: 560px) {
+  .brand-role { font-size: 17px; }
+  .brand .brand-name { font-size: 13.5px; }
+}
+
+/* ---------- نوار تاریخ و ساعت ---------- */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ticker { direction: ltr; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 8px 0; }
+.ticker-track { display: flex; width: max-content; animation: tick 38s linear infinite; }
+.tick-group { display: flex; flex: none; align-items: center; }
+.tick-text { direction: rtl; unicode-bidi: isolate; white-space: pre; font-weight: 700; font-size: 14.5px; color: var(--navy); font-variant-numeric: tabular-nums; }
+.tick-dot { padding: 0 18px; color: var(--sun); font-size: 18px; line-height: 1; }
+@keyframes tick { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; width: auto; justify-content: center; }
+  .tick-group:nth-child(2), .tick-group .tick-text:nth-of-type(n+2), .tick-group .tick-dot { display: none; }
+}
+
+/* ---------- گالری ---------- */
+.hero { flex-direction: column; flex-wrap: nowrap; align-items: stretch; gap: 22px; }
+.hero-text { flex: none; width: 100%; }
+.gallery { --gh: 226px; position: relative; margin: -6px -8px 0; }
+.gal-track {
+  display: flex; align-items: center; gap: 14px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+  padding: 14px calc(50% - var(--gh) / 2) 34px;
+  -webkit-overflow-scrolling: touch; border-radius: var(--radius);
+}
+.gal-track::-webkit-scrollbar { display: none; }
+.slide { flex: none; margin: 0; height: var(--gh); scroll-snap-align: center; cursor: pointer; }
+.slide img {
+  height: 100%; width: auto; max-width: none; border-radius: 18px; border: 3px solid #fff;
+  box-shadow: 0 4px 14px rgba(12, 95, 87, 0.16);
+  filter: blur(3.5px); opacity: .55; transform: scale(.88);
+  transition: filter .35s, opacity .35s, transform .35s;
+}
+.slide.is-active img { filter: none; opacity: 1; transform: scale(1); box-shadow: 0 8px 22px rgba(12, 95, 87, 0.28); }
+.gal-btn {
+  position: absolute; top: calc(14px + var(--gh) / 2 - 22px); z-index: 2;
+  width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--navy); color: #fff; font: 700 24px/1 var(--font); display: grid; place-items: center;
+  box-shadow: 0 4px 12px rgba(12, 95, 87, 0.3);
+}
+.gal-next { left: 8px; }
+.gal-prev { right: 8px; }
+.gal-btn:hover { background: var(--blue); }
+.gal-dots { position: absolute; bottom: 8px; left: 0; right: 0; display: flex; justify-content: center; gap: 7px; }
+.gal-dot { width: 10px; height: 10px; padding: 0; border: 0; border-radius: 999px; background: var(--line); cursor: pointer; transition: width .25s, background-color .25s; }
+.gal-dot.on { width: 28px; background: var(--blue); }
+@media (min-width: 720px) {
+  .gallery { --gh: 340px; }
+  .gal-track { gap: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide img { transition: none; }
+}
