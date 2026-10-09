@@ -55,6 +55,7 @@
     var strip = document.getElementById('tickerStrip');
     var dtEl = document.getElementById('tkDt');
     var quoteEl = document.getElementById('tkQuote');
+    var svcEl = document.getElementById('tkSvc');
     var sr = document.getElementById('tickerSr');
     var tz = 'Asia/Tehran';
     var slogans = [
@@ -132,11 +133,11 @@
     // هر بار فقط یکی از دو چیز دیده می‌شود: «تاریخ و ساعت» یا «شعار».
     // از چپ وارد می‌شود (حرکت به راست)، وسط نوار مکث می‌کند، بعد از راست بیرون می‌رود.
     var ENTER = 1500, HOLD = 4200, EXIT = 3600, GAP = 1200;
-    var showDate = true;
+    var items = [dtEl, quoteEl, svcEl].filter(Boolean);
+    var turn = 0;
     var cycle = function () {
-      dtEl.hidden = !showDate;
-      quoteEl.hidden = showDate;
-      var item = showDate ? dtEl : quoteEl;
+      items.forEach(function (el, i) { el.hidden = i !== turn; });
+      var item = items[turn];
       strip.style.transform = 'none';
       var cw = ticker.clientWidth;
       var sw = item.offsetWidth + 28;                       // با فاصلهٔ دو طرف
@@ -154,15 +155,14 @@
       anim.onfinish = function () {
         strip.style.opacity = '0';
         anim.cancel();
-        showDate = !showDate;
+        turn = (turn + 1) % items.length;
         setTimeout(cycle, GAP);
       };
     };
 
     if (reduce || !strip.animate) {
       ticker.classList.add('static');
-      dtEl.hidden = false;
-      quoteEl.hidden = false;
+      items.forEach(function (el) { el.hidden = false; });
     } else {
       strip.style.opacity = '0';
       (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(cycle);

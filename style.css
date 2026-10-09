@@ -536,7 +536,7 @@ body::after {
 
 /* ---------- نوار: هر بار یک مورد ---------- */
 .ticker-strip { gap: 0; padding-inline: 0; transform-origin: left center; }
-.tk-dt, .tk-quote { padding-inline: 14px; text-align: center; }
+.tk-dt, .tk-quote, .tk-svc { padding-inline: 14px; text-align: center; }
 .tk-dt[hidden], .tk-quote[hidden] { display: none; }
 .tk-dot { display: none; }
 .ticker.static .ticker-strip { gap: 4px 12px; }
@@ -763,3 +763,5 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 .topbar.compact .brand .brand-name { font-size: 12px; }
 .topbar.compact .nav { padding: 3px; }
 .topbar.compact .nav a { padding: 5px 10px; font-size: 13px; }
+.tk-svc { font-size: 13px; font-weight: 700; color: #4f5a63; padding-inline: 14px; }
+.tk-svc[hidden], .tk-dt[hidden], .tk-quote[hidden] { display: none; }
