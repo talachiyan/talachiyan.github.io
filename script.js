@@ -38,29 +38,14 @@
     onScroll();
   })();
 
-  /* ---------- ابر «نیاز به مشاوره»: هنگام ورود از پایین می‌آید ---------- */
+  /* ---------- دکمهٔ «راهنمایی یا مشاوره»: وقتی پاورقی دیده شود کنار می‌رود ---------- */
   (function () {
-    try { if (sessionStorage.getItem('cloudSeen')) return; } catch (e) {}
-    var box = document.createElement('div');
-    box.className = 'cloud';
-    box.setAttribute('role', 'dialog');
-    box.setAttribute('aria-label', 'پیشنهاد مشاوره');
-    box.innerHTML =
-      '<svg class="cloud-bg" viewBox="0 0 300 168" preserveAspectRatio="none" aria-hidden="true">' +
-      '<path d="M78 138C46 138 24 118 24 92c0-22 16-40 38-44C66 24 88 8 114 8c22 0 41 11 51 28 7-4 15-6 24-6 23 0 42 16 45 38 25 3 44 22 44 46 0 24-21 42-48 42H78z"/>' +
-      '<circle cx="104" cy="152" r="9"/><circle cx="84" cy="164" r="5"/></svg>' +
-      '<button type="button" class="cloud-x" aria-label="بستن">×</button>' +
-      '<div class="cloud-text"><strong>در صورت نیاز به مشاوره</strong>' +
-      '<a href="contact.html">درخواست مشاوره ←</a></div>';
-    var close = function () {
-      box.classList.add('out');
-      try { sessionStorage.setItem('cloudSeen', '1'); } catch (e) {}
-      setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 600);
-    };
-    box.querySelector('.cloud-x').addEventListener('click', close);
-    box.querySelector('a').addEventListener('click', function () { try { sessionStorage.setItem('cloudSeen', '1'); } catch (e) {} });
-    setTimeout(function () { document.body.appendChild(box); }, 1400);
-    setTimeout(function () { if (box.parentNode && !box.classList.contains('out')) close(); }, 1400 + 16000);
+    var fab = document.querySelector('.fab');
+    var foot = document.querySelector('.site-footer');
+    if (!fab || !foot || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (e) {
+      fab.classList.toggle('away', e[0].isIntersecting);
+    }, { threshold: 0.05 }).observe(foot);
   })();
 
   /* ---------- نوار تاریخ، ساعت و شعار روز ----------
