@@ -882,3 +882,4 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 .cform-send .send-wa { background: linear-gradient(135deg, #2bd16a, #129a4a); }
 .cform-send .send-bl { background: linear-gradient(135deg, #3fa4ff, #1f6fe0); }
 .cform-msg { margin: 0; font-size: 14px; color: #0a574f; white-space: pre-line; line-height: 1.9; }
+.consult-opts { grid-template-columns: 1fr; }
