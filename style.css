@@ -549,3 +549,28 @@ body::after {
 .step-text p { margin: 0; font-size: 14.5px; color: var(--sky); text-align: justify; }
 .step-text h2::after { display: none; }
 .step-box { padding: 14px 12px; }
+
+/* =====================================================
+   نسخهٔ ۱۴: سربرگ تیره، باکس‌های متمایز از پس‌زمینه
+   ===================================================== */
+.topbar { background: #0a4640; box-shadow: 0 8px 22px rgba(6, 40, 36, .28); }
+.topbar .brand { color: #fff; }
+.topbar .brand-role { color: #fff; }
+.topbar .brand .brand-name { color: #bfdcd6; }
+.topbar .brand-sub { color: #9fc7bf; }
+.topbar .brand-mark { background: #00877c; }
+.topbar .brand-mark::after { border-color: #0a4640; }
+.topbar .nav { background: rgba(255, 255, 255, .10); }
+.topbar .nav a { color: #cfe6e1; }
+.topbar .nav a:hover { background: rgba(255, 255, 255, .14); color: #fff; }
+.topbar .nav a.active, .topbar .nav a.active:hover { background: #00877c; color: #fff; box-shadow: 0 3px 10px rgba(0, 0, 0, .25); }
+
+/* باکس‌های داخل پنل سبز تیره: روشن‌تر از زمینه */
+.svc, .step-box { background: #167a70; border: 1px solid rgba(255, 255, 255, .30); box-shadow: 0 4px 12px rgba(0, 0, 0, .16); }
+.svc[open] { background: #1b8a7f; }
+.svc summary { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+/* در کارت‌های سفید هم باکس‌ها کمی رنگ می‌گیرند */
+.contact { background: #f1f7f6; border-color: #c5d8d3; }
+.soon { background: #f1f7f6; border-color: #b7cfca; }
+.quick { border-color: #d6e3e0; }
