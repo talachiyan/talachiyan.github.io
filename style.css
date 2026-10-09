@@ -533,3 +533,19 @@ body::after {
 
 /* ---------- سربرگ ثابت هنگام اسکرول ---------- */
 .topbar { position: sticky; top: calc(8px + env(safe-area-inset-top, 0px)); z-index: 30; }
+
+/* ---------- نوار: هر بار یک مورد ---------- */
+.ticker-strip { gap: 0; padding-inline: 0; transform-origin: left center; }
+.tk-dt, .tk-quote { padding-inline: 14px; text-align: center; }
+.tk-dt[hidden], .tk-quote[hidden] { display: none; }
+.tk-dot { display: none; }
+.ticker.static .ticker-strip { gap: 4px 12px; }
+
+/* ---------- صفحهٔ همکاری: باریک و هم‌رنگ با خدمات ---------- */
+.step-box { display: flex; gap: 14px; align-items: flex-start; padding: 16px 14px; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .16); border-radius: 18px; }
+.step-no { flex: none; width: 38px; height: 38px; border-radius: 12px; background: var(--sun); color: #3d2f00; font-weight: 800; font-size: 18px; display: grid; place-items: center; }
+.step-text { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.step-text h2 { margin: 0; font-size: 17px; font-weight: 700; color: #fff; line-height: 1.6; }
+.step-text p { margin: 0; font-size: 14.5px; color: var(--sky); text-align: justify; }
+.step-text h2::after { display: none; }
+.step-box { padding: 14px 12px; }

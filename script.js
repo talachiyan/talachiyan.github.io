@@ -4,8 +4,7 @@
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- نوار تاریخ، ساعت و شعار روز ----------
-     یک خط: تاریخ و ساعت + شعار. چند ثانیه ثابت می‌ماند، بعد از چپ به راست
-     حرکت می‌کند و می‌رود؛ کمی فاصله می‌افتد و دوباره از اول می‌آید. */
+     یک نوار: به‌نوبت «تاریخ و ساعت» و «شعار روز»، هرکدام با حرکت می‌آید، مکث می‌کند و می‌رود. */
   var ticker = document.getElementById('ticker');
   if (ticker) {
     var strip = document.getElementById('tickerStrip');
@@ -85,30 +84,40 @@
     fill();
     setInterval(fill, 1000);
 
-    var HOLD = 4500, FADE = 500, GAP = 2800, SPEED = 0.055; // سرعت: پیکسل بر میلی‌ثانیه
+    // هر بار فقط یکی از دو چیز دیده می‌شود: «تاریخ و ساعت» یا «شعار».
+    // از چپ وارد می‌شود (حرکت به راست)، وسط نوار مکث می‌کند، بعد از راست بیرون می‌رود.
+    var ENTER = 1300, HOLD = 3800, EXIT = 1300, GAP = 1400;
+    var showDate = true;
     var cycle = function () {
+      dtEl.hidden = !showDate;
+      quoteEl.hidden = showDate;
+      var item = showDate ? dtEl : quoteEl;
+      strip.style.transform = 'none';
       var cw = ticker.clientWidth;
-      var sw = strip.offsetWidth;
-      var x0 = sw > cw ? cw - sw : (cw - sw) / 2; // ابتدای متن (سمت راست) کنار لبهٔ راست
-      var x1 = cw + 12;                            // تا کاملاً از سمت راست بیرون برود
-      var move = (x1 - x0) / SPEED;
-      var total = FADE + HOLD + move;
-      var a = 'translateX(' + x0 + 'px)', b = 'translateX(' + x1 + 'px)';
+      var sw = item.offsetWidth + 28;                       // با فاصلهٔ دو طرف
+      var k = Math.min(1, Math.max(0.78, (cw - 8) / sw));  // شعار بلند کمی کوچک می‌شود تا جا شود
+      var w = sw * k;
+      var xStart = -w - 8, xMid = (cw - w) / 2, xEnd = cw + 8;
+      var total = ENTER + HOLD + EXIT;
+      var f = function (x) { return 'translateX(' + x + 'px) scale(' + k + ')'; };
       var anim = strip.animate([
-        { transform: a, opacity: 0, offset: 0 },
-        { transform: a, opacity: 1, offset: FADE / total },
-        { transform: a, opacity: 1, offset: (FADE + HOLD) / total },
-        { transform: b, opacity: 1, offset: 1 }
-      ], { duration: total, easing: 'linear', fill: 'forwards' });
+        { transform: f(xStart), opacity: 0, offset: 0, easing: 'cubic-bezier(.2,.7,.2,1)' },
+        { transform: f(xMid), opacity: 1, offset: ENTER / total },
+        { transform: f(xMid), opacity: 1, offset: (ENTER + HOLD) / total, easing: 'cubic-bezier(.6,0,.9,.4)' },
+        { transform: f(xEnd), opacity: 0.2, offset: 1 }
+      ], { duration: total, fill: 'forwards' });
       anim.onfinish = function () {
         strip.style.opacity = '0';
         anim.cancel();
+        showDate = !showDate;
         setTimeout(cycle, GAP);
       };
     };
 
     if (reduce || !strip.animate) {
       ticker.classList.add('static');
+      dtEl.hidden = false;
+      quoteEl.hidden = false;
     } else {
       strip.style.opacity = '0';
       (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(cycle);
