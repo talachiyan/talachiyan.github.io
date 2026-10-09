@@ -530,3 +530,6 @@ body::after {
 .panel-note { margin: 0; font-size: 14.5px; color: var(--sky); text-align: center; }
 .svc summary:focus-visible { outline: 3px solid var(--sun); outline-offset: -3px; }
 @media (prefers-reduced-motion: reduce) { .svc, .svc-chev { transition: none; } }
+
+/* ---------- سربرگ ثابت هنگام اسکرول ---------- */
+.topbar { position: sticky; top: calc(8px + env(safe-area-inset-top, 0px)); z-index: 30; }
