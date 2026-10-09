@@ -132,7 +132,7 @@
 
     // هر بار فقط یکی از دو چیز دیده می‌شود: «تاریخ و ساعت» یا «شعار».
     // از چپ وارد می‌شود (حرکت به راست)، وسط نوار مکث می‌کند، بعد از راست بیرون می‌رود.
-    var ENTER = 1500, HOLD = 4200, EXIT = 3600, GAP = 1200;
+    var ENTER = 2800, HOLD = 4500, EXIT = 5200, GAP = 1200;
     var items = [dtEl, quoteEl, svcEl].filter(Boolean);
     var turn = 0;
     var cycle = function () {
@@ -140,8 +140,8 @@
       var item = items[turn];
       strip.style.transform = 'none';
       var cw = ticker.clientWidth;
-      var sw = item.offsetWidth + 28;                       // با فاصلهٔ دو طرف
-      var k = Math.min(1, Math.max(0.78, (cw - 8) / sw));  // شعار بلند کمی کوچک می‌شود تا جا شود
+      var sw = item.offsetWidth;
+      var k = Math.min(1, Math.max(0.78, (cw - 8) / sw));  // متن بلند کمی کوچک می‌شود تا جا شود
       var w = sw * k;
       var xStart = -w - 8, xMid = (cw - w) / 2, xEnd = cw + 8;
       var total = ENTER + HOLD + EXIT;
