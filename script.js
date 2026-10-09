@@ -3,60 +3,115 @@
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- نوار تاریخ و ساعت (حرکت از چپ به راست) ---------- */
-  var track = document.getElementById('tickerTrack');
-  if (track) {
+  /* ---------- نوار تاریخ، ساعت و شعار روز ----------
+     یک خط: تاریخ و ساعت + شعار. چند ثانیه ثابت می‌ماند، بعد از چپ به راست
+     حرکت می‌کند و می‌رود؛ کمی فاصله می‌افتد و دوباره از اول می‌آید. */
+  var ticker = document.getElementById('ticker');
+  if (ticker) {
+    var strip = document.getElementById('tickerStrip');
+    var dtEl = document.getElementById('tkDt');
+    var quoteEl = document.getElementById('tkQuote');
     var sr = document.getElementById('tickerSr');
     var tz = 'Asia/Tehran';
-    var dateFmt, timeFmt;
+    var slogans = [
+      "هر روز یک قدم کوچک؛ در یک سال، یک مسیر بزرگ.",
+      "نظم امروز، آرامش فردای کسب‌وکار است.",
+      "تیم خوب را با اعتماد می‌سازند، نه با دستور.",
+      "آنچه اندازه‌گیری شود، بهتر می‌شود.",
+      "مشتری راضی، بهترین تبلیغ شماست.",
+      "اول هدف را روشن کن، بعد گام را بردار.",
+      "اشتباه، هزینهٔ یادگیری است؛ تکرارش هزینهٔ بی‌توجهی.",
+      "رهبر خوب راه را نشان می‌دهد و کنار تیم می‌ماند.",
+      "کار کوچکِ هر روز، از ایدهٔ بزرگِ یک شب ارزشمندتر است.",
+      "بازخورد، هدیه‌ای است که رشد را سریع‌تر می‌کند.",
+      "سیستم بساز تا کسب‌وکار به یک نفر وابسته نماند.",
+      "شفافیت، نیمی از مسیر تیم‌سازی است.",
+      "امروز را درست شروع کن؛ فردا خودش مرتب می‌شود.",
+      "صبر و پیگیری، دو بال موفقیت‌اند.",
+      "به جای بهانه، برنامه بنویس.",
+      "فروش وقتی شروع می‌شود که اعتماد ساخته شده باشد.",
+      "کیفیت، بی‌سروصدا بهترین سخنگوی توست.",
+      "سؤال درست، نیمی از راه‌حل است.",
+      "بزرگ فکر کن، کوچک شروع کن، پیوسته ادامه بده.",
+      "برای رشد دیگران وقت بگذار؛ رشد تیم، رشد توست.",
+      "تصمیم سریع‌تر، با اطلاعات درست‌تر.",
+      "هر مسئولیت به اندازهٔ خودش اختیار می‌خواهد.",
+      "تغییر از همان‌جا شروع می‌شود که تصمیم گرفتی.",
+      "کار تیمی یعنی همه یک نقشه را ببینند.",
+      "حرف خوب را بنویس و اجرا کن.",
+      "برنامه‌ریزی امروز، دردسر کمتر در فردا.",
+      "قدردانی از تیم، ارزان‌ترین سرمایه‌گذاری است.",
+      "هر مشتری یک داستان دارد؛ بشنو.",
+      "موفقیت یعنی ادامه دادن، وقتی دیگران ایستاده‌اند.",
+      "ساده بگو، دقیق عمل کن.",
+      "امروز بهتر از دیروز؛ همین یعنی رشد.",
+      "با عدد تصمیم بگیر، با دل رهبری کن.",
+      "اعتماد دیر ساخته می‌شود، اما همه‌چیز با آن ساخته می‌شود.",
+      "کار را به آدم درست بسپار و پیگیرش باش.",
+      "برند تو قولی است که هر روز نگهش می‌داری.",
+      "فرصت‌ها برای آماده‌ها زودتر می‌رسند."
+    ];
+    var dateFmt = null, timeFmt = null;
     try {
       dateFmt = new Intl.DateTimeFormat('fa-IR-u-ca-persian', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: tz });
       timeFmt = new Intl.DateTimeFormat('fa-IR', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: tz });
-    } catch (e) { dateFmt = null; }
-
-    var texts = [];
-    var build = function () {
-      var group = function () {
-        var g = document.createElement('div');
-        g.className = 'tick-group';
-        for (var i = 0; i < 4; i++) {
-          var span = document.createElement('span');
-          span.className = 'tick-text';
-          span.setAttribute('dir', 'rtl');
-          g.appendChild(span);
-          texts.push(span);
-          var dot = document.createElement('span');
-          dot.className = 'tick-dot';
-          dot.textContent = '•';
-          g.appendChild(dot);
-        }
-        return g;
-      };
-      track.appendChild(group());
-      track.appendChild(group());
-    };
+    } catch (e) {}
 
     var part = function (parts, type) {
       for (var i = 0; i < parts.length; i++) if (parts[i].type === type) return parts[i].value;
       return '';
     };
 
-    var update = function () {
-      if (!dateFmt) return;
-      var now = new Date();
-      var p = dateFmt.formatToParts(now);
-      var date = [part(p, 'weekday'), part(p, 'day'), part(p, 'month'), part(p, 'year')].join(' ');
-      var msg = '\u200F' + 'امروز ' + date + ' \u200F· ساعت ' + timeFmt.format(now);
-      for (var i = 0; i < texts.length; i++) texts[i].textContent = msg;
-      if (sr) sr.textContent = msg;
+    // شعار هر روز عوض می‌شود (بر اساس تاریخ تهران)
+    var sloganOfToday = function () {
+      var day;
+      try {
+        day = Math.floor(Date.parse(new Date().toLocaleDateString('en-CA', { timeZone: tz }) + 'T00:00:00Z') / 86400000);
+      } catch (e) { day = Math.floor(Date.now() / 86400000); }
+      return slogans[((day % slogans.length) + slogans.length) % slogans.length];
     };
 
-    if (dateFmt) {
-      build();
-      update();
-      setInterval(update, 1000);
+    var fill = function () {
+      var now = new Date();
+      var dt = '';
+      if (dateFmt) {
+        var p = dateFmt.formatToParts(now);
+        dt = '\u200Fامروز ' + [part(p, 'weekday'), part(p, 'day'), part(p, 'month'), part(p, 'year')].join(' ') + ' \u200F· ساعت ' + timeFmt.format(now);
+      }
+      dtEl.textContent = dt;
+      quoteEl.textContent = sloganOfToday();
+      if (sr) sr.textContent = dt + '. ' + quoteEl.textContent;
+    };
+    fill();
+    setInterval(fill, 1000);
+
+    var HOLD = 4500, FADE = 500, GAP = 2800, SPEED = 0.055; // سرعت: پیکسل بر میلی‌ثانیه
+    var cycle = function () {
+      var cw = ticker.clientWidth;
+      var sw = strip.offsetWidth;
+      var x0 = sw > cw ? cw - sw : (cw - sw) / 2; // ابتدای متن (سمت راست) کنار لبهٔ راست
+      var x1 = cw + 12;                            // تا کاملاً از سمت راست بیرون برود
+      var move = (x1 - x0) / SPEED;
+      var total = FADE + HOLD + move;
+      var a = 'translateX(' + x0 + 'px)', b = 'translateX(' + x1 + 'px)';
+      var anim = strip.animate([
+        { transform: a, opacity: 0, offset: 0 },
+        { transform: a, opacity: 1, offset: FADE / total },
+        { transform: a, opacity: 1, offset: (FADE + HOLD) / total },
+        { transform: b, opacity: 1, offset: 1 }
+      ], { duration: total, easing: 'linear', fill: 'forwards' });
+      anim.onfinish = function () {
+        strip.style.opacity = '0';
+        anim.cancel();
+        setTimeout(cycle, GAP);
+      };
+    };
+
+    if (reduce || !strip.animate) {
+      ticker.classList.add('static');
     } else {
-      track.parentNode.hidden = true;
+      strip.style.opacity = '0';
+      (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(cycle);
     }
   }
 

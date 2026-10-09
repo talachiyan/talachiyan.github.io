@@ -497,3 +497,36 @@ body::after {
   .gal-btn { width: 40px; height: 40px; top: calc(26px + var(--gh) / 2 - 20px); }
   .gallery-card { padding: 8px 10px 6px; }
 }
+
+/* =====================================================
+   نسخهٔ ۱۰: نوار یک‌خطی (تاریخ + شعار) و خدمات به‌صورت باکس‌های بازشو
+   ===================================================== */
+.ticker { position: relative; height: 42px; padding: 0; overflow: hidden; direction: ltr; }
+.ticker-strip { position: absolute; top: 0; left: 0; height: 100%; display: flex; align-items: center; gap: 16px; white-space: nowrap; direction: rtl; padding-inline: 14px; }
+.tk-dt { font-weight: 700; font-size: 14.5px; color: #4f5a63; font-variant-numeric: tabular-nums; }
+.tk-dot { color: #9aa5ad; font-size: 9px; }
+.tk-quote { font-weight: 500; font-size: 14.5px; color: #6b7780; }
+.ticker.static { height: auto; padding: 8px 12px; }
+.ticker.static .ticker-strip { position: static; height: auto; flex-wrap: wrap; justify-content: center; white-space: normal; text-align: center; padding: 0; gap: 4px 12px; }
+
+.panel.narrow { max-width: 620px; width: 100%; margin-inline: auto; padding: 24px 16px 22px; gap: 18px; }
+.panel-head { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.panel-head h1 { margin: 0; font-size: 30px; font-weight: 800; color: #fff; }
+.panel-head h1::after { content: ""; display: block; width: 52px; height: 4px; border-radius: 999px; background: var(--sun); margin: 8px auto 0; }
+.panel-head p { margin: 6px 0 0; color: var(--sky); font-size: 15px; }
+.svc-list { display: flex; flex-direction: column; gap: 10px; }
+.svc { background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .16); border-radius: 18px; overflow: hidden; transition: background-color .2s; }
+.svc[open] { background: rgba(255, 255, 255, .15); }
+.svc summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 12px; min-height: 64px; }
+.svc summary::-webkit-details-marker { display: none; }
+.svc .icon.small, .svc .icon { width: 42px; height: 42px; border-radius: 13px; }
+.svc-text { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.6; }
+.svc-title { font-size: 17px; font-weight: 700; color: #fff; }
+.svc-teaser { font-size: 13.5px; color: var(--sky); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.svc-chev { flex: none; width: 28px; height: 28px; border-radius: 50%; background: rgba(255, 255, 255, .14); display: grid; place-items: center; transition: transform .25s; }
+.svc-chev svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.svc[open] .svc-chev { transform: rotate(180deg); }
+.svc-body { margin: 0; padding: 0 16px 16px; font-size: 15px; color: #fff; }
+.panel-note { margin: 0; font-size: 14.5px; color: var(--sky); text-align: center; }
+.svc summary:focus-visible { outline: 3px solid var(--sun); outline-offset: -3px; }
+@media (prefers-reduced-motion: reduce) { .svc, .svc-chev { transition: none; } }

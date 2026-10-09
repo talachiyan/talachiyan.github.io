@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap">
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 <div class="wrap">
@@ -40,44 +40,46 @@
 
   <main class="stack">
 
-    <section class="card page-head">
-      <h1>خدمات</h1>
-      <p class="justify muted">هر کسب‌وکاری داستان خودش را دارد؛ اما بیشتر گره‌ها در یکی از این چهار جا بسته می‌شوند. هر جا که شما را درگیر کرده، از همان‌جا شروع می‌کنیم.</p>
-    </section>
-
-    <section class="panel" id="services">
-      <h2>در چه زمینه‌هایی کنار شما هستم</h2>
-      <div class="grid">
-        <div class="service">
-          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg></span>
-          <div>
-            <h3>مشاورهٔ مارکتینگ</h3>
-            <p class="justify">بازاریابی یعنی رساندن پیام درست به آدم درست. با شناخت مشتری و بازار، برنامه‌ای می‌چینیم که دیده‌شدن را به فروش واقعی برساند.</p>
-          </div>
-        </div>
-        <div class="service">
-          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5M16 5a3 3 0 0 1 0 6M21 19c0-2.5-1.5-4-4-4.6"/></svg></span>
-          <div>
-            <h3>تیم‌سازی</h3>
-            <p class="justify">هیچ کسب‌وکاری بزرگ‌تر از تیمش نمی‌شود. نقش‌ها را روشن می‌کنیم تا آدم‌های درست کنار هم بنشینند و تیم، حتی بی‌حضور مدیر، درست کار کند.</p>
-          </div>
-        </div>
-        <div class="service">
-          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15v-4M12 15V8M16 15v-6"/></svg></span>
-          <div>
-            <h3>مدیریت کسب‌وکار</h3>
-            <p class="justify">نظم، پشتوانهٔ رشد است. از گزارش روزانه و کنترل هزینه تا فرایندهای روشن و تصمیم‌هایی که بر عدد تکیه دارند.</p>
-          </div>
-        </div>
-        <div class="service">
-          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M8 17c.8-1.8 2.2-2.6 4-2.6s3.2.8 4 2.6"/></svg></span>
-          <div>
-            <h3>مشاورهٔ پرسنلی</h3>
-            <p class="justify">از جذب و مصاحبه تا آموزش، ارزیابی و نگه‌داشتن نیروی خوب؛ تا هر نفر در جای درست خودش بدرخشد.</p>
-          </div>
-        </div>
+    <section class="panel narrow" id="services">
+      <div class="panel-head">
+        <h1>خدمات</h1>
+        <p>در چه زمینه‌هایی کنار شما هستم</p>
       </div>
-      <p class="justify" style="color:var(--sky)">و هر دغدغهٔ دیگری که مسیر کسب‌وکارتان را کند کرده است؛ کافی است مطرحش کنید تا با هم راهش را پیدا کنیم.</p>
+      <div class="svc-list">
+        <details class="svc">
+          <summary>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg></span>
+            <span class="svc-text"><span class="svc-title">مشاورهٔ مارکتینگ</span><span class="svc-teaser">پیام درست، به آدم درست.</span></span>
+            <span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <p class="svc-body justify">بازاریابی یعنی رساندن پیام درست به آدم درست. با شناخت مشتری و بازار، برنامه‌ای می‌چینیم که دیده‌شدن را به فروش واقعی برساند.</p>
+        </details>
+        <details class="svc">
+          <summary>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5M16 5a3 3 0 0 1 0 6M21 19c0-2.5-1.5-4-4-4.6"/></svg></span>
+            <span class="svc-text"><span class="svc-title">تیم‌سازی</span><span class="svc-teaser">تیمی که بی‌مدیر هم کار کند.</span></span>
+            <span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <p class="svc-body justify">هیچ کسب‌وکاری بزرگ‌تر از تیمش نمی‌شود. نقش‌ها را روشن می‌کنیم تا آدم‌های درست کنار هم بنشینند و تیم، حتی بی‌حضور مدیر، درست کار کند.</p>
+        </details>
+        <details class="svc">
+          <summary>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15v-4M12 15V8M16 15v-6"/></svg></span>
+            <span class="svc-text"><span class="svc-title">مدیریت کسب‌وکار</span><span class="svc-teaser">نظم و عدد، پشتوانهٔ رشد است.</span></span>
+            <span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <p class="svc-body justify">نظم، پشتوانهٔ رشد است. از گزارش روزانه و کنترل هزینه تا فرایندهای روشن و تصمیم‌هایی که بر عدد تکیه دارند.</p>
+        </details>
+        <details class="svc">
+          <summary>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M8 17c.8-1.8 2.2-2.6 4-2.6s3.2.8 4 2.6"/></svg></span>
+            <span class="svc-text"><span class="svc-title">مشاورهٔ پرسنلی</span><span class="svc-teaser">نیروی درست، در جای درست.</span></span>
+            <span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <p class="svc-body justify">از جذب و مصاحبه تا آموزش، ارزیابی و نگه‌داشتن نیروی خوب؛ تا هر نفر در جای درست خودش بدرخشد.</p>
+        </details>
+      </div>
+      <p class="justify panel-note">و هر دغدغهٔ دیگری که مسیر کسب‌وکارتان را کند کرده است؛ کافی است مطرحش کنید تا با هم راهش را پیدا کنیم.</p>
     </section>
 
   </main>

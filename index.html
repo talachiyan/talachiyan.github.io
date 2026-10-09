@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap">
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 <div class="wrap">
@@ -40,8 +40,8 @@
 
   <main class="stack">
 
-    <div class="ticker" role="timer" aria-label="تاریخ و ساعت امروز">
-      <div class="ticker-track" id="tickerTrack" aria-hidden="true"></div>
+    <div class="ticker" id="ticker" role="timer" aria-label="تاریخ، ساعت و شعار روز">
+      <div class="ticker-strip" id="tickerStrip" dir="rtl" aria-hidden="true"><span class="tk-dt" id="tkDt"></span><span class="tk-dot">◆</span><span class="tk-quote" id="tkQuote"></span></div>
       <span class="sr-only" id="tickerSr"></span>
     </div>
 
@@ -105,6 +105,6 @@
 <a class="fab" href="contact.html" aria-label="تماس سریع">
   <svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>
 </a>
-<script src="script.js?v=3" defer></script>
+<script src="script.js?v=4" defer></script>
 </body>
 </html>
