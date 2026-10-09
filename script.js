@@ -74,13 +74,12 @@
   })();
 
   /* ---------- نوار تاریخ، ساعت و شعار روز ----------
-     یک نوار: به‌نوبت «تاریخ و ساعت» و «شعار روز»، هرکدام با حرکت می‌آید، مکث می‌کند و می‌رود. */
+     سه مورد پشت‌سرهم روی یک ریل کنار هم‌اند. هر مورد وسط نوار مکث می‌کند و بعد ریل
+     آرام به راست می‌رود: مورد قبلی از راست بیرون می‌رود و همان لحظه بعدی از چپ می‌آید،
+     پس هیچ لحظه‌ای نوار خالی نیست. */
   var ticker = document.getElementById('ticker');
   if (ticker) {
-    var strip = document.getElementById('tickerStrip');
-    var dtEl = document.getElementById('tkDt');
-    var quoteEl = document.getElementById('tkQuote');
-    var svcEl = document.getElementById('tkSvc');
+    var track = document.getElementById('tickerTrack');
     var sr = document.getElementById('tickerSr');
     var tz = 'Asia/Tehran';
     var slogans = [
@@ -121,6 +120,7 @@
       "کسب‌وکار سالم، فرایندی روشن و تیمی پاسخ‌گو دارد.",
       "از مشاوره شروع کن؛ مسیر روشن‌تر می‌شود."
     ];
+    var SERVICES = 'مارکتینگ · تیم‌سازی · مدیریت کسب‌وکار · مشاورهٔ پرسنلی';
     var dateFmt = null, timeFmt = null;
     try {
       dateFmt = new Intl.DateTimeFormat('fa-IR-u-ca-persian', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: tz });
@@ -131,8 +131,6 @@
       for (var i = 0; i < parts.length; i++) if (parts[i].type === type) return parts[i].value;
       return '';
     };
-
-    // شعار هر روز عوض می‌شود (بر اساس تاریخ تهران)
     var sloganOfToday = function () {
       var day;
       try {
@@ -140,65 +138,80 @@
       } catch (e) { day = Math.floor(Date.now() / 86400000); }
       return slogans[((day % slogans.length) + slogans.length) % slogans.length];
     };
+    var dateText = function () {
+      if (!dateFmt) return '';
+      var now = new Date();
+      var p = dateFmt.formatToParts(now);
+      return '\u200Fامروز ' + [part(p, 'weekday'), part(p, 'day'), part(p, 'month'), part(p, 'year')].join(' ') + ' \u200F· ساعت ' + timeFmt.format(now);
+    };
+
+    // ترتیب نمایش: تاریخ و ساعت ← شعار ← خدمات
+    var kinds = ['dt', 'quote', 'svc'];
+    var make = function (kind) {
+      var el = document.createElement('span');
+      el.className = 'tk tk-' + kind;
+      el.setAttribute('dir', 'rtl');
+      el.setAttribute('data-kind', kind);
+      return el;
+    };
+    // ریل (از چپ به راست): [نسخهٔ تکراری تاریخ] ‌ خدمات ‌ شعار ‌ تاریخ
+    var order = ['dt', 'svc', 'quote', 'dt'];
+    var els = order.map(make);
+    els.forEach(function (el) { track.appendChild(el); });
 
     var fill = function () {
-      var now = new Date();
-      var dt = '';
-      if (dateFmt) {
-        var p = dateFmt.formatToParts(now);
-        dt = '\u200Fامروز ' + [part(p, 'weekday'), part(p, 'day'), part(p, 'month'), part(p, 'year')].join(' ') + ' \u200F· ساعت ' + timeFmt.format(now);
-      }
-      dtEl.textContent = dt;
-      quoteEl.textContent = sloganOfToday();
-      if (sr) sr.textContent = dt + '. ' + quoteEl.textContent;
+      var d = dateText(), q = sloganOfToday();
+      els.forEach(function (el) {
+        var k = el.getAttribute('data-kind');
+        el.textContent = k === 'dt' ? d : (k === 'quote' ? q : SERVICES);
+      });
+      if (sr) sr.textContent = d + '. ' + q + '. ' + SERVICES;
     };
     fill();
     setInterval(fill, 1000);
 
-    // هر بار فقط یکی از دو چیز دیده می‌شود: «تاریخ و ساعت» یا «شعار».
-    // از چپ وارد می‌شود (حرکت به راست)، وسط نوار مکث می‌کند، بعد از راست بیرون می‌رود.
-    var ENTER = 2400, HOLD = 4500, EXIT = 4600, GAP = 150;
-    var items = [dtEl, quoteEl, svcEl].filter(Boolean);
-    var turn = 0;
-    var cycle = function () {
-      items.forEach(function (el, i) { el.hidden = i !== turn; });
-      var item = items[turn];
-      strip.style.transform = 'none';
+    var HOLD = 4500, MOVE = 2600;
+    var anim = null;
+    var build = function () {
+      if (anim) { anim.cancel(); anim = null; }
       var cw = ticker.clientWidth;
-      var sw = item.offsetWidth;
-      var k = Math.min(1, Math.max(0.78, (cw - 8) / sw));  // متن بلند کمی کوچک می‌شود تا جا شود
-      var w = sw * k;
-      var xStart = -w - 8, xMid = (cw - w) / 2, xEnd = cw + 8;
-      var total = ENTER + HOLD + EXIT;
-      var f = function (x) { return 'translateX(' + x + 'px) scale(' + k + ')'; };
-      // حرکت: از بیرون لبهٔ چپ می‌آید، وسط می‌ایستد، آرام از لبهٔ راست بیرون می‌رود
-      var move = strip.animate([
-        { transform: f(xStart), offset: 0, easing: 'cubic-bezier(.2,.7,.2,1)' },
-        { transform: f(xMid), offset: ENTER / total },
-        { transform: f(xMid), offset: (ENTER + HOLD) / total, easing: 'cubic-bezier(.35,0,.55,1)' },
-        { transform: f(xEnd), offset: 1 }
-      ], { duration: total, fill: 'forwards' });
-      // دیده‌شدن: خیلی زود پیدا می‌شود و تا لحظهٔ خروج کامل پررنگ می‌ماند (فاصلهٔ خالی کم می‌شود)
-      var fade = strip.animate([
-        { opacity: 0, offset: 0 },
-        { opacity: 1, offset: 0.06 },
-        { opacity: 1, offset: 1 }
-      ], { duration: total, fill: 'forwards' });
-      move.onfinish = function () {
-        strip.style.opacity = '0';
-        move.cancel();
-        fade.cancel();
-        turn = (turn + 1) % items.length;
-        setTimeout(cycle, GAP);
-      };
+      // مقیاس هر مورد (متن بلند کمی کوچک می‌شود تا کامل جا شود)
+      els.forEach(function (el) {
+        el.style.transform = 'none';
+        var w = el.offsetWidth;
+        var k = Math.min(1, Math.max(0.78, (cw - 8) / w));
+        el.style.transform = 'scale(' + k + ')';
+      });
+      var tx = function (el) { return cw / 2 - (el.offsetLeft + el.offsetWidth / 2); };
+      // نقطه‌ها: تاریخ (راست‌ترین) ← شعار ← خدمات ← نسخهٔ تکراری تاریخ
+      var P = [tx(els[3]), tx(els[2]), tx(els[1]), tx(els[0])];
+      var T = 3 * (HOLD + MOVE);
+      var at = function (ms) { return ms / T; };
+      var f = function (x) { return 'translateX(' + x + 'px)'; };
+      var ease = 'cubic-bezier(.45,0,.55,1)';
+      var frames = [
+        { transform: f(P[0]), offset: 0 },
+        { transform: f(P[0]), offset: at(HOLD), easing: ease },
+        { transform: f(P[1]), offset: at(HOLD + MOVE) },
+        { transform: f(P[1]), offset: at(2 * HOLD + MOVE), easing: ease },
+        { transform: f(P[2]), offset: at(2 * HOLD + 2 * MOVE) },
+        { transform: f(P[2]), offset: at(3 * HOLD + 2 * MOVE), easing: ease },
+        { transform: f(P[3]), offset: 1 }
+      ];
+      track.style.transform = f(P[0]);
+      // پایان دور = همان نمای ابتدای دور (نسخهٔ تکراری)، پس تکرار بی‌پرش است
+      anim = track.animate(frames, { duration: T, iterations: Infinity });
     };
 
-    if (reduce || !strip.animate) {
+    if (reduce || !track.animate) {
       ticker.classList.add('static');
-      items.forEach(function (el) { el.hidden = false; });
+      // بدون حرکت: سه مورد کنار هم، بدون نسخهٔ تکراری
+      track.removeChild(els[0]);
+      track.style.transform = 'none';
     } else {
-      strip.style.opacity = '0';
-      (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(cycle);
+      (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(build);
+      var rt = null;
+      window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 200); });
     }
   }
 
