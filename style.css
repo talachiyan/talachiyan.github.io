@@ -574,3 +574,16 @@ body::after {
 .contact { background: #f1f7f6; border-color: #c5d8d3; }
 .soon { background: #f1f7f6; border-color: #b7cfca; }
 .quick { border-color: #d6e3e0; }
+
+/* =====================================================
+   نسخهٔ ۱۵: نوار باریک‌تر، پاورقی مشکی
+   ===================================================== */
+.ticker { height: 32px; border-radius: 12px; margin-bottom: -16px; }
+.tk-dt, .tk-quote { font-size: 13px; }
+.ticker.static { padding: 5px 10px; }
+
+body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
+.wrap { flex: 1 0 auto; width: 100%; padding-bottom: 36px; }
+.site-footer { position: relative; z-index: 1; flex: none; background: #0b0d0e; color: #d5dadc; text-align: center; padding: 18px 16px calc(18px + env(safe-area-inset-bottom, 0px)); border-top: 3px solid #000; }
+.site-footer p { margin: 0; font-size: 13.5px; line-height: 1.9; }
+.site-footer .who { font-weight: 700; color: #fff; font-size: 14px; }
