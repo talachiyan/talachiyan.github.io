@@ -781,3 +781,11 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 .topbar.compact .brand .brand-name { font-size: 11.5px; }
 .topbar .brand-row { justify-content: center; }
 @media (max-width: 360px) { .topbar .brand-title { gap: 8px; } .topbar .brand-role { font-size: 14px; padding: 3px 8px; } }
+
+/* ---------- سربرگ: عنوان بزرگ‌تر، منو کوچک‌تر ---------- */
+.topbar .brand-role { font-size: 18.5px; padding: 5px 12px; border-radius: 11px; }
+.topbar .nav { padding: 3px; }
+.topbar .nav a { padding: 5px 10px; font-size: 12.5px; font-weight: 600; }
+.topbar.compact .brand-role { font-size: 16px; padding: 3px 10px; }
+.topbar.compact .nav a { padding: 4px 9px; font-size: 12px; }
+@media (max-width: 360px) { .topbar .brand-role { font-size: 16px; padding: 4px 9px; } }
