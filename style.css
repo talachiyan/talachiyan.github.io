@@ -938,3 +938,26 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 .coop-list .fact { min-height: 52px; padding: 9px 12px; }
 .coop-list .fact .icon { width: 36px; height: 36px; border-radius: 11px; }
 .coop-list .fact-title { font-size: 15px; }
+
+/* مقالات */
+.post-list { display: flex; flex-direction: column; gap: 12px; }
+.post-card { display: flex; flex-direction: column; gap: 6px; padding: 14px; border-radius: 18px; background: #eef6f4; border: 1px solid #c3d8d3; text-decoration: none; color: var(--text); }
+.post-card strong { font-size: 16.5px; line-height: 1.7; color: #0c3f3a; }
+.post-card span { font-size: 14px; line-height: 1.9; color: #4b5961; }
+.post-card em { font-style: normal; font-size: 13.5px; font-weight: 700; color: #00877c; }
+.post { display: flex; flex-direction: column; gap: 10px; }
+.post h1 { margin: 0; font-size: 24px; line-height: 1.6; font-weight: 800; color: #1b2531; }
+.post-back { font-size: 13.5px; font-weight: 700; color: #00877c; text-decoration: none; }
+.post-meta { margin: 0; font-size: 13px; color: #6b7d7a; }
+.post-body { font-size: 15.5px; line-height: 2.1; color: #26333a; }
+.post-body h2 { font-size: 19px; margin: 18px 0 6px; color: #0c5f57; }
+.post-body h2::after { display: none; }
+.post-body ul, .post-body ol { padding-inline-start: 22px; margin: 6px 0; }
+.post-body li { margin-bottom: 6px; }
+.post-body p { margin: 8px 0; }
+.post-cta { margin-top: 10px; padding: 14px; border-radius: 18px; background: #e6f3f0; text-align: center; }
+.post-cta p { margin: 0 0 10px; font-weight: 700; }
+.coop-list .svc-title { font-size: 15px; }
+.coop-list .svc summary { min-height: 54px; padding: 9px 12px; }
+.coop-list .svc .icon { width: 36px; height: 36px; border-radius: 11px; }
+.post-body ol { list-style-type: persian; }
