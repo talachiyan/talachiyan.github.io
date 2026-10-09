@@ -716,3 +716,33 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 /* لوگوی رسمی پیام‌رسان‌ها (فایل‌های img/ic-*.svg) */
 .soc-ico, .brand-ico { background: none; box-shadow: none; overflow: visible; border-radius: 0; }
 .soc-ico img, .brand-ico img { width: 100%; height: 100%; display: block; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .22)); }
+
+/* =====================================================
+   نسخهٔ ۲۳: سربرگ روشن، آیکن‌های کوچک‌تر پاورقی، فاصلهٔ بیشتر تا پاورقی
+   ===================================================== */
+.topbar { background: #ffffff; box-shadow: 0 6px 18px rgba(30, 50, 56, .14); border: 1px solid rgba(40, 70, 76, .10); opacity: 1; }
+.topbar .brand { color: var(--text); }
+.topbar .brand-role { color: #0c5f57; }
+.topbar .brand .brand-name { color: #5a6870; }
+.topbar .brand-sub { color: #6a777e; }
+.topbar .brand-mark { background: #0c5f57; }
+.topbar .brand-mark::after { border-color: #fff; }
+.topbar .nav { background: #edf2f1; }
+.topbar .nav a { color: #4e5c63; }
+.topbar .nav a:hover { background: #dde8e6; color: #0c5f57; }
+.topbar .nav a.active, .topbar .nav a.active:hover { background: #00877c; color: #fff; box-shadow: 0 3px 8px rgba(0, 100, 92, .28); }
+
+/* هنگام اسکرول: کوچک می‌شود، ولی کاملاً مات است تا نوشته‌های زیرش دیده نشود */
+.topbar.compact { opacity: 1; background: #f4f8f7; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: 0 6px 16px rgba(30, 50, 56, .22); }
+
+/* آیکن پیام‌رسان‌های پاورقی */
+.foot-social { gap: 18px; }
+.soc { min-width: 48px; gap: 3px; }
+.soc-ico { width: 26px; height: 26px; }
+.soc-name { font-size: 11px; }
+.site-footer { padding-top: 10px; padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px)); }
+.foot-in { gap: 6px; }
+
+/* فضای خالی بین آخرین نوشتهٔ صفحه و پاورقی */
+.wrap { padding-bottom: 64px; }
+@media (min-width: 720px) { .wrap { padding-bottom: 84px; } }
