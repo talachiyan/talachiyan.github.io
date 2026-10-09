@@ -868,3 +868,17 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 .contacts.tiles .t-tg { background: linear-gradient(135deg, #38b6f2, #1b7fd0); }
 .contacts.tiles .t-ig { background: linear-gradient(135deg, #f4a03a, #e0334f 55%, #b3269e); }
 .contacts.tiles .t-bl { background: linear-gradient(135deg, #3fa4ff, #1f6fe0); }
+
+/* فرم درخواست مشاوره */
+.page-consult .site-footer .foot-social { display: none; }
+.cform { display: flex; flex-direction: column; gap: 14px; }
+.cform label { display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 14.5px; color: #1b2a2e; }
+.cform input, .cform select, .cform textarea { font: inherit; font-weight: 400; font-size: 16px; padding: 11px 12px; border: 1px solid #c5d8d3; border-radius: 14px; background: #f6faf9; color: #1b2a2e; width: 100%; box-sizing: border-box; }
+.cform input:focus, .cform select:focus, .cform textarea:focus { outline: 2px solid #00877c; border-color: #00877c; background: #fff; }
+.cform textarea { resize: vertical; }
+.cform-hint { margin: 4px 0 -4px; font-weight: 700; font-size: 14.5px; }
+.cform-send { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cform-send button { font: inherit; font-weight: 800; font-size: 17px; color: #fff; border: 0; border-radius: 16px; padding: 14px 8px; cursor: pointer; box-shadow: 0 8px 18px rgba(0,0,0,.14); }
+.cform-send .send-wa { background: linear-gradient(135deg, #2bd16a, #129a4a); }
+.cform-send .send-bl { background: linear-gradient(135deg, #3fa4ff, #1f6fe0); }
+.cform-msg { margin: 0; font-size: 14px; color: #0a574f; white-space: pre-line; line-height: 1.9; }
