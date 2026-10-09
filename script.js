@@ -132,7 +132,7 @@
 
     // هر بار فقط یکی از دو چیز دیده می‌شود: «تاریخ و ساعت» یا «شعار».
     // از چپ وارد می‌شود (حرکت به راست)، وسط نوار مکث می‌کند، بعد از راست بیرون می‌رود.
-    var ENTER = 2800, HOLD = 4500, EXIT = 5200, GAP = 1200;
+    var ENTER = 2400, HOLD = 4500, EXIT = 4600, GAP = 150;
     var items = [dtEl, quoteEl, svcEl].filter(Boolean);
     var turn = 0;
     var cycle = function () {
@@ -146,15 +146,23 @@
       var xStart = -w - 8, xMid = (cw - w) / 2, xEnd = cw + 8;
       var total = ENTER + HOLD + EXIT;
       var f = function (x) { return 'translateX(' + x + 'px) scale(' + k + ')'; };
-      var anim = strip.animate([
-        { transform: f(xStart), opacity: 0, offset: 0, easing: 'cubic-bezier(.2,.7,.2,1)' },
-        { transform: f(xMid), opacity: 1, offset: ENTER / total },
-        { transform: f(xMid), opacity: 1, offset: (ENTER + HOLD) / total, easing: 'cubic-bezier(.35,0,.55,1)' },
-        { transform: f(xEnd), opacity: 0.2, offset: 1 }
+      // حرکت: از بیرون لبهٔ چپ می‌آید، وسط می‌ایستد، آرام از لبهٔ راست بیرون می‌رود
+      var move = strip.animate([
+        { transform: f(xStart), offset: 0, easing: 'cubic-bezier(.2,.7,.2,1)' },
+        { transform: f(xMid), offset: ENTER / total },
+        { transform: f(xMid), offset: (ENTER + HOLD) / total, easing: 'cubic-bezier(.35,0,.55,1)' },
+        { transform: f(xEnd), offset: 1 }
       ], { duration: total, fill: 'forwards' });
-      anim.onfinish = function () {
+      // دیده‌شدن: خیلی زود پیدا می‌شود و تا لحظهٔ خروج کامل پررنگ می‌ماند (فاصلهٔ خالی کم می‌شود)
+      var fade = strip.animate([
+        { opacity: 0, offset: 0 },
+        { opacity: 1, offset: 0.06 },
+        { opacity: 1, offset: 1 }
+      ], { duration: total, fill: 'forwards' });
+      move.onfinish = function () {
         strip.style.opacity = '0';
-        anim.cancel();
+        move.cancel();
+        fade.cancel();
         turn = (turn + 1) % items.length;
         setTimeout(cycle, GAP);
       };
