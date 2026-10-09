@@ -851,3 +851,7 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
   .topbar.compact .brand-title { flex-direction: row; align-items: center; }
   .topbar.compact .brand-name { display: none; }
 }
+
+/* صفحهٔ تماس: آیکون‌ها سمت چپِ هر لینک */
+.contact { flex-direction: row-reverse; justify-content: space-between; }
+.contact > span:not(.brand-ico) { text-align: right; }
