@@ -765,3 +765,10 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 .topbar.compact .nav a { padding: 5px 10px; font-size: 13px; }
 .tk-svc { font-size: 13px; font-weight: 700; color: #4f5a63; padding-inline: 14px; }
 .tk-svc[hidden], .tk-dt[hidden], .tk-quote[hidden] { display: none; }
+
+/* فضای بیشتر بین آخرین مطلب هر صفحه و پایین صفحه */
+.wrap { padding-bottom: 110px; }
+@media (min-width: 720px) { .wrap { padding-bottom: 140px; } }
+
+/* صفحهٔ تماس: آیکن‌ها همان بالا هستند، پس پاورقی فقط حقوق را دارد */
+.page-contact .foot-social, .page-contact .foot-line { display: none; }
