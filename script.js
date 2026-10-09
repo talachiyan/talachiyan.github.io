@@ -3,6 +3,31 @@
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- کپی آیدی (واتساپ) ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'), function (a) {
+    var idEl = a.querySelector('.id');
+    var orig = idEl ? idEl.textContent : '';
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var txt = a.getAttribute('data-copy');
+      var done = function () {
+        if (!idEl) return;
+        idEl.textContent = 'کپی شد ✓';
+        setTimeout(function () { idEl.textContent = orig; }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(done, function () { fallback(txt, done); });
+      } else { fallback(txt, done); }
+    });
+  });
+  function fallback(txt, done) {
+    var ta = document.createElement('textarea');
+    ta.value = txt; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
   /* ---------- سربرگ: هنگام اسکرول کمرنگ‌تر و جمع‌تر می‌شود ---------- */
   (function () {
     var bar = document.querySelector('.topbar');

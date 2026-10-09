@@ -789,3 +789,4 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 .topbar.compact .brand-role { font-size: 16px; padding: 3px 10px; }
 .topbar.compact .nav a { padding: 4px 9px; font-size: 12px; }
 @media (max-width: 360px) { .topbar .brand-role { font-size: 16px; padding: 4px 9px; } }
+.contact .id { direction: ltr; unicode-bidi: isolate; text-align: right; display: block; font-size: 14px; color: #4b5961; }
