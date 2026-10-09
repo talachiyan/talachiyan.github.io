@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap">
-<link rel="stylesheet" href="style.css?v=47">
+<link rel="stylesheet" href="style.css?v=48">
 </head>
 <body class="page-consult page-smart">
 <div class="wrap">
@@ -49,10 +49,9 @@
     <section class="card smart" id="smart">
       <h2>مشاورهٔ هوشمند</h2>
       <p class="muted">سؤالتان را از فهرست انتخاب کنید تا پاسخ کوتاه و کاربردی بگیرید.</p>
-      <div class="chat" id="chat" aria-live="polite">
-        <div class="bub bot">سلام! دربارهٔ کدام موضوع سؤال دارید؟</div>
-      </div>
+      <div class="bub bot hello">سلام! دربارهٔ کدام موضوع سؤال دارید؟</div>
       <div class="qgroups" id="qs"></div>
+      <div class="chat" id="chat" aria-live="polite"></div>
       <div class="smart-cta">
         <a class="sc-main" href="consult.html">درخواست مشاوره</a>
         <a class="sc-wa" href="https://wa.me/h.talachiyan" target="_blank" rel="noopener noreferrer">پیام در واتساپ</a>
@@ -74,7 +73,7 @@
     var x=QA[b.dataset.i];b.classList.add('done');
     add('me',x.q);
     var t=add('bot typing','…');
-    chat.scrollIntoView({block:'end',behavior:'smooth'});
+    t.scrollIntoView({block:'center',behavior:'smooth'});
     setTimeout(function(){t.classList.remove('typing');t.textContent=x.a;t.scrollIntoView({block:'nearest',behavior:'smooth'});},650);
   });
 })();
