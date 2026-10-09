@@ -3,6 +3,41 @@
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- سربرگ: هنگام اسکرول کمرنگ‌تر و جمع‌تر می‌شود ---------- */
+  (function () {
+    var bar = document.querySelector('.topbar');
+    if (!bar) return;
+    var compact = false, fullH = 0, ticking = false;
+    var measure = function () {
+      var was = bar.classList.contains('compact');
+      bar.classList.remove('compact');
+      bar.style.marginBottom = '0px';
+      fullH = bar.offsetHeight;
+      if (was) apply(true);
+    };
+    var apply = function (on) {
+      compact = on;
+      bar.classList.toggle('compact', on);
+      // ارتفاع صفحه ثابت می‌ماند تا محتوا نپرد
+      bar.style.marginBottom = on ? Math.max(0, fullH - bar.offsetHeight) + 'px' : '0px';
+    };
+    var onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        var y = window.pageYOffset || document.documentElement.scrollTop;
+        if (!compact && y > 70) apply(true);
+        else if (compact && y < 12) apply(false);
+      });
+    };
+    measure();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', measure);
+    window.addEventListener('load', measure);
+    onScroll();
+  })();
+
   /* ---------- ابر «نیاز به مشاوره»: هنگام ورود از پایین می‌آید ---------- */
   (function () {
     try { if (sessionStorage.getItem('cloudSeen')) return; } catch (e) {}

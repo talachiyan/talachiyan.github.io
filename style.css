@@ -644,3 +644,48 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 .site-footer .foot-copy, .site-footer .foot-dev { margin: 0; font-size: 14px; line-height: 1.9; color: #43515a; font-weight: 400; }
 .site-footer .foot-dev strong { color: #0c5f57; font-weight: 800; letter-spacing: .01em; }
 .wrap { padding-bottom: 20px; }
+
+/* =====================================================
+   نسخهٔ ۱۹: پاورقی کوچک و متقارن، پنل‌های سفید، سربرگ جمع‌شونده
+   ===================================================== */
+/* پاورقی: آخرین بخش صفحه؛ بالا فقط پیام‌رسان‌ها، زیر خط حقوق */
+.wrap { padding-bottom: 28px; }
+.site-footer { background: rgba(255, 255, 255, .62); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); border-top: 1px solid rgba(40, 60, 66, .20); padding: 14px 14px calc(14px + env(safe-area-inset-bottom, 0px)); text-align: center; color: #43515a; }
+.foot-in { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.foot-social { display: flex; justify-content: center; gap: 22px; width: 100%; }
+.soc { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #3c4a52; min-width: 56px; }
+.soc-ico { width: 38px; height: 38px; border-radius: 11px; overflow: hidden; display: block; box-shadow: 0 2px 6px rgba(0, 0, 0, .16); }
+.soc-ico svg { width: 100%; height: 100%; display: block; }
+.soc-name { font-size: 12px; font-weight: 500; line-height: 1.4; }
+.soc:hover .soc-name { color: #0c5f57; }
+.foot-line { border: 0; border-top: 1px solid rgba(40, 60, 66, .22); margin: 2px 0; width: 100%; }
+.site-footer .foot-copy, .site-footer .foot-dev { margin: 0; font-size: 12.5px; line-height: 1.7; color: #4b5961; font-weight: 400; text-align: center; }
+.site-footer .foot-dev strong { color: #0c5f57; font-weight: 800; letter-spacing: .02em; }
+.foot-cta, .foot-name, .foot-links { display: none; }
+
+/* پنل‌های خدمات و همکاری: سفید و روشن */
+.panel.narrow { background: #fff; color: var(--text); box-shadow: var(--shadow); }
+.panel-head h1 { color: var(--text); }
+.panel-head p { color: var(--muted); }
+.panel.narrow .svc, .panel.narrow .step-box { background: #eef6f4; border: 1px solid #c3d8d3; box-shadow: none; }
+.panel.narrow .svc[open] { background: #e1f0ec; }
+.panel.narrow .svc-title { color: var(--text); }
+.panel.narrow .svc-teaser { color: var(--muted); }
+.panel.narrow .svc-body { color: #2d3b40; }
+.panel.narrow .svc-chev { background: #d4e6e1; }
+.panel.narrow .svc-chev svg { stroke: #0c5f57; }
+.panel.narrow .icon { background: #d8ebe6; }
+.panel.narrow .panel-note { color: var(--muted); }
+.panel.narrow .svc summary:focus-visible { outline-color: var(--blue); }
+
+/* سربرگ هنگام اسکرول: کمرنگ‌تر و فشرده */
+.topbar { transition: opacity .25s; }
+.topbar.compact { opacity: .88; padding: 7px 12px 8px; gap: 6px; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); background: linear-gradient(135deg, rgba(59, 68, 77, .90), rgba(109, 120, 130, .86)); }
+.topbar.compact .brand-sub { display: none; }
+.topbar.compact .brand-mark { width: 30px; height: 30px; border-radius: 10px; }
+.topbar.compact .brand-mark svg { width: 17px; height: 17px; }
+.topbar.compact .brand-role { font-size: 15px; }
+.topbar.compact .brand .brand-name { font-size: 12.5px; }
+.topbar.compact .nav { padding: 3px; }
+.topbar.compact .nav a { padding: 5px 11px; font-size: 13.5px; }
+@media (prefers-reduced-motion: reduce) { .topbar { transition: none; } }
