@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap">
-<link rel="stylesheet" href="style.css?v=15">
+<link rel="stylesheet" href="style.css?v=16">
 </head>
 <body>
 <div class="wrap">
@@ -67,10 +67,23 @@
       <div class="hero-text">
         <h1>با نقشهٔ روشن و تیم درست، کسب‌وکار <span class="accent">رشد</span> می‌کند</h1>
         <p class="justify muted">من حسین طلاچیان هستم. کنار صاحبان کسب‌وکار می‌نشینم تا آنچه امروز پراکنده است، فردا سامان بگیرد: پیامی که مشتری را جذب کند، تیمی که به هم تکیه کند، و مدیریتی که بر عدد و برنامه استوار باشد، نه بر حدس و گمان.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="contact.html">درخواست مشاوره</a>
-          <a class="btn btn-soft" href="services.html">خدمات من</a>
-        </div>
+      </div>
+    </section>
+
+    <section class="card consult" id="consult" aria-label="درخواست مشاوره">
+      <a class="consult-main" href="contact.html">
+        <span class="consult-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8"/></svg></span>
+        <span>درخواست مشاوره</span>
+      </a>
+      <div class="consult-opts">
+        <a class="consult-opt" href="contact.html" data-todo="phone">
+          <span class="consult-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+          <span>تلفنی</span>
+        </a>
+        <a class="consult-opt" href="contact.html" data-todo="visit">
+          <span class="consult-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.200-7-11a7 7 0 0 1 14 0c0 4.800-7 11-7 11z"/><circle cx="12" cy="10" r="2.500"/></svg></span>
+          <span>حضوری</span>
+        </a>
       </div>
     </section>
 
@@ -109,6 +122,6 @@
 <a class="fab" href="contact.html" aria-label="تماس سریع">
   <svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>
 </a>
-<script src="script.js?v=6" defer></script>
+<script src="script.js?v=7" defer></script>
 </body>
 </html>
