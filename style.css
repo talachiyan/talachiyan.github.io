@@ -855,3 +855,16 @@ body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100
 /* صفحهٔ تماس: آیکون‌ها سمت چپِ هر لینک */
 .contact { flex-direction: row-reverse; justify-content: space-between; }
 .contact > span:not(.brand-ico) { text-align: right; }
+
+/* صفحهٔ تماس: دکمه‌های رنگی بدون نمایش آیدی */
+.contacts.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.contacts.tiles .contact { flex-direction: column; justify-content: center; gap: 10px; min-height: 124px; padding: 16px 10px; border: 0; border-radius: 20px; color: #fff; text-align: center; box-shadow: 0 8px 18px rgba(0,0,0,.14); transition: transform .15s; }
+.contacts.tiles .contact:active { transform: scale(.97); }
+.contacts.tiles .contact > span:not(.brand-ico) { text-align: center; }
+.contacts.tiles .contact strong { font-size: 17px; color: #fff; }
+.contacts.tiles .brand-ico { width: 56px; height: 56px; border-radius: 50%; background: #fff; display: grid; place-items: center; box-shadow: none; }
+.contacts.tiles .brand-ico img { width: 40px; height: 40px; box-shadow: none; border-radius: 50%; }
+.contacts.tiles .t-wa { background: linear-gradient(135deg, #2bd16a, #129a4a); }
+.contacts.tiles .t-tg { background: linear-gradient(135deg, #38b6f2, #1b7fd0); }
+.contacts.tiles .t-ig { background: linear-gradient(135deg, #f4a03a, #e0334f 55%, #b3269e); }
+.contacts.tiles .t-bl { background: linear-gradient(135deg, #3fa4ff, #1f6fe0); }
